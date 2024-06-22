@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const familyTreeContainer = document.getElementById('family-tree-container');
     const addMemberForm = document.getElementById('add-member-form');
+    const downloadPngButton = document.getElementById('download-png');
 
     fetch('data.json')
         .then(response => response.json())
@@ -22,11 +23,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     });
 
+    downloadPngButton.addEventListener('click', () => {
+        domtoimage.toPng(document.getElementById('family-tree-container'))
+            .then((dataUrl) => {
+                const link = document.createElement('a');
+                link.download = 'family-tree.png';
+                link.href = dataUrl;
+                link.click();
+            })
+            .catch((error) => {
+                console.error('Error generating PNG:', error);
+            });
+    });
+
     function createFamilyTree(family) {
         familyTreeContainer.innerHTML = ''; // Clear existing tree
 
-        const width = 800;
-        const height = 600;
+        const width = 960;
+        const height = 500;
 
         const treeData = convertToTreeData(family);
         const root = d3.hierarchy(treeData);
@@ -56,9 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         node.append('rect')
             .attr('width', 100)
-            .attr('height', 20)
+            .attr('height', 50)
             .attr('x', -50)
-            .attr('y', -10);
+            .attr('y', -25)
+            .attr('rx', 10)
+            .attr('ry', 10);
 
         node.append('text')
             .attr('dy', 3)
