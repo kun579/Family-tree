@@ -54,13 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
             .attr('class', 'node')
             .attr('transform', d => `translate(${d.y},${d.x})`);
 
-        node.append('circle')
-            .attr('r', 5);
+        node.append('rect')
+            .attr('width', 100)
+            .attr('height', 20)
+            .attr('x', -50)
+            .attr('y', -10);
 
         node.append('text')
             .attr('dy', 3)
-            .attr('x', d => d.children ? -8 : 8)
-            .style('text-anchor', d => d.children ? 'end' : 'start')
+            .attr('x', 0)
+            .style('text-anchor', 'middle')
             .text(d => d.data.name);
     }
 

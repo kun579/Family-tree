@@ -47,8 +47,7 @@ button:hover {
     background-color: #218838;
 }
 
-.node {
-    cursor: pointer;
+.node rect {
     fill: #fff;
     stroke: steelblue;
     stroke-width: 1.5px;
