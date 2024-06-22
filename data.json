@@ -1,0 +1,28 @@
+{
+    "family": [
+        {
+            "name": "Mother",
+            "parent": ""
+        },
+        {
+            "name": "Father",
+            "parent": ""
+        },
+        {
+            "name": "Me",
+            "parent": "Mother"
+        },
+        {
+            "name": "Me",
+            "parent": "Father"
+        },
+        {
+            "name": "Brother",
+            "parent": "Mother"
+        },
+        {
+            "name": "Brother",
+            "parent": "Father"
+        }
+    ]
+}
